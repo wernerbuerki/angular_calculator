@@ -1,7 +1,7 @@
 import { CompileFactoryMetadata } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { CalcData } from '../calc-data';
-import { CalculatorService } from '../calculator.service'
+import { CalculatorService } from '../calculator.service';
 
 @Component({
   selector: 'app-calculator',
@@ -23,13 +23,13 @@ export class CalculatorComponent implements OnInit {
   setDefaultValues(): void {
   }
 
-  addNumber(number: string): void {
+  addNumber(num: string): void {
     if (!this.isOperand2) {
-      this.calcData.Operand1 = +(this.calcData.Operand1.toString() + number.toString());
+      this.calcData.Operand1 = +(this.calcData.Operand1.toString() + num.toString());
       this.viewString = this.calcData.Operand1.toString();
     }
     else {
-      this.calcData.Operand2 = +(this.calcData.Operand2.toString() + number.toString());
+      this.calcData.Operand2 = +(this.calcData.Operand2.toString() + num.toString());
       this.viewString = this.calcData.Operand2.toString();
     }
     console.log(this.calcData);
@@ -43,7 +43,9 @@ export class CalculatorComponent implements OnInit {
 
   reset(inclView: boolean = true): void {
     this.calcData = { Operand1: 0, Operand2: 0, Operator: '', Result: 0 };
-    if (inclView) this.viewString = '';
+    if (inclView) {
+      this.viewString = '';
+    }
     this.isOperand2 = false;
   }
 
